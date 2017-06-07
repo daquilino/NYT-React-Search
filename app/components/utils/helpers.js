@@ -22,7 +22,7 @@ var helper = {
 
     return Axios.get(NYT_ENDPOINT, {params: params}).then(function(response) {
     
-      // If get get a result
+      // If we get a result
       if (response.data.response.docs[0]) {
         return response.data.response.docs;
       }
@@ -39,17 +39,17 @@ var helper = {
 
   // This function posts new searches to our database.
   postSaved: function(article) {
+   
     var body = {
       "title": article.headline.main,
       "datePublished": Moment(article.pub_date),
       "url": article.web_url
     };
-   
     return Axios.post("/api/saved", body);
   },
 
-  deleteSaved: function(title){
-    return Axios.delete("/api/saved", { title: title });
+  deleteSaved: function(id){
+    return Axios.delete("/api/saved/" + id);
   }
 };
 

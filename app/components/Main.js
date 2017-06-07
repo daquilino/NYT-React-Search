@@ -1,7 +1,6 @@
 // Include React
 var React = require("react");
 
-
 // Here we include all of the sub-components
 var Search = require("./children/Search");
 var Saved = require("./children/Saved");
@@ -23,8 +22,8 @@ var Main = React.createClass({
       
         <Search />
         <Saved />
-      
-        {/*this.props.children*/}
+   
+        {/*this.props.children //for react-router */}
       </div>
     </div>  
     );

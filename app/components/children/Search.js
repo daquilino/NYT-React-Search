@@ -1,69 +1,45 @@
 // Include React
 var React = require("react");
-
+var Helper = require("../utils/helpers");
+var Query = require('../grandchildren/Query');
+var Results = require('../grandchildren/Results');
 // Creating the Search component
 var Search = React.createClass({
 
-  // Here we set a generic state associated with the text being searched for
   getInitialState: function() {
-    return { term: "" };
+    return { term: "", startYear: 1851, endYear: 2017, articles: [] };
   },
 
-  // This function will respond to the user input
-  handleChange: function(event) {
+  componentDidUpdate: function(prevProps, prevState) {
+	
+	// this prevents setState to keep triggering componentDidUpdtate 
+	 if((this.state.term !== prevState.term) || (this.state.startYear !== prevState.startYear) 
+	 	|| (this.state.endYear !== prevState.endYear)){  	
 
-    this.setState({ term: event.target.value });
-
+	  	Helper.runQuery(this.state.term, this.state.startYear, this.state.endYear)
+	  	.then(function(data){ 		
+				
+				// saves NYT queried articles to state
+				this.setState({"articles" : data});
+			  	console.log(this.state.articles);	 		
+		}.bind(this));
+	}	
   },
 
-  // When a user submits...
-  handleSubmit: function(event) {
-    // prevent the HTML from trying to submit a form if the user hits "Enter" instead of
-    // clicking the button
-    event.preventDefault();
+  setTerm: function(term, startYear, endYear){
+  	// saves values from child component 'Query' to this components state. 
+  	this.setState({"term": term, "startYear": startYear, "endYear": endYear});
 
-    // Set the parent to have the search term
-    this.props.setTerm(this.state.term);
-    this.setState({ term: "" });
   },
-  // Here we describe this component's render method
+  
   render: function() {
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h3 className="panel-title text-center">Query</h3>
-        </div>
-        <div className="panel-body text-center">
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <h4 className="">
-                <strong>Location</strong>
-              </h4>
+      <div className="container">
 
-              {/*
-                Note how each of the form elements has an id that matches the state.
-                This is not necessary but it is convenient.
-                Also note how each has an onChange event associated with our handleChange event.
-              */}
-              <input
-                value={this.state.term}
-                type="text"
-                className="form-control text-center"
-                id="term"
-                onChange={this.handleChange}
-                required
-              />
-              <br />
-              <button
-                className="btn btn-primary"
-                type="submit"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
+        <Query setTerm={this.setTerm}/>
+        <Results articles={this.state.articles}/>
+       
+      </div>  
     );
   }
 });

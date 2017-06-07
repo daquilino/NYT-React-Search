@@ -3,13 +3,13 @@ var React = require("react");
 
 
 // Here we include all of the sub-components
-var Form = require("./children/Form");
-var Results = require("./children/Results");
-var History = require("./children/History");
+var Search = require("./children/Search");
+var Saved = require("./children/Saved");
+
 
 // Helper for making AJAX requests to our API
 var helpers = require("./utils/helpers");
-
+/*
 // Creating the Main component
 var Main = React.createClass({
 
@@ -64,6 +64,7 @@ var Main = React.createClass({
   // Here we render the function
   render: function() {
     return (
+ 
       <div className="container">
         <div className="row">
           <div className="jumbotron">
@@ -93,10 +94,29 @@ var Main = React.createClass({
 
         </div>
 
-      </div>
+      </div>   
     );
-  }
+  } 
 });
+
+*/
+// test code =======================================================
+var Main = React.createClass({
+  render: function() {
+    return (
+      
+      <Search />
+    
+    );
+  } 
+});
+// test code ==========================================================
+
+
+
+
+
+
 
 // Export the component back for use in other files
 module.exports = Main;

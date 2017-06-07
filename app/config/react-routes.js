@@ -20,7 +20,7 @@ var IndexRoute = router.IndexRoute;
 
 // Reference the high-level components
 var Main = require("../components/Main");
-var Info = require("../components/Info");
+var  = require("../components/Info");
 var Chat = require("../components/Chat");
 
 

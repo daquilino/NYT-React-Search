@@ -1,6 +1,8 @@
 # NYT-React-Search
 React-based New York Times article search application.
 
+React-based New York Times Article Search application. Users can search NYT for articles given a search topic and begining and end year to search.  Then five article headlines of the search results are displayed to the user showing their publication date, along with 'Save' and 'Read' buttons.  The user can read the article by clicking on the 'Read' button which will open the articles link in a new tab. The user can also click 'Save' to save the article's info to a database for later reading.  In the 'Saved Articles' the user has the choice to read the article or delete the article removing it from the database. 
+
 
 
 ## Built With

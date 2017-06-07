@@ -1,8 +1,8 @@
 // Include React
 var React = require("react");
 var Helper = require("../utils/helpers");
-var Query = require('../grandchildren/Query');
-var Results = require('../grandchildren/Results');
+var Query = require('./search-children/Query');
+var Results = require('./search-children/Results');
 // Creating the Search component
 var Search = React.createClass({
 
@@ -11,17 +11,16 @@ var Search = React.createClass({
   },
 
   componentDidUpdate: function(prevProps, prevState) {
-	
+    
 	// this prevents setState to keep triggering componentDidUpdtate 
 	if((this.state.term !== prevState.term) || (this.state.startYear !== prevState.startYear) 
 	 	|| (this.state.endYear !== prevState.endYear)){  	
-
+  
 	  	Helper.runQuery(this.state.term, this.state.startYear, this.state.endYear)
 	  	.then(function(data){ 		
 				
 				// saves NYT queried articles to state
-				this.setState({"articles" : data});
-			  	console.log(this.state.articles);	 		
+				this.setState({"articles" : data}); 		
 		}.bind(this));
 	}	
   },
@@ -34,7 +33,7 @@ var Search = React.createClass({
   
   render: function() {
     return (
-      <div className="container">
+      <div className="row">
 
         <Query setTerm={this.setTerm}/>
         <Results articles={this.state.articles}/>

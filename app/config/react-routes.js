@@ -20,6 +20,7 @@ const IndexRoute = router.IndexRoute;
 
 // Reference the high-level components
 const Main = require("../components/Main");
+const Search = require("../components/children/Search")
 const Saved = require("../components/children/Saved");
 
 
@@ -34,7 +35,7 @@ module.exports = (
       <Route path="saved" component={Saved} />
      
       {/* If user selects any other path... we get the Info Route */}
-      <IndexRoute component={Main} />
+      <IndexRoute component={Search} />
 
     </Route>
   </Router>

@@ -1,5 +1,6 @@
 // Include React
-var React = require("react");
+const React = require("react");
+//const Link = require("react-router").Link;
 
 // Creating the Results component
 var Query = React.createClass({
@@ -80,6 +81,9 @@ var Query = React.createClass({
               >
                 Submit
               </button>
+              
+              {/*<Link to="/saved"><button className="btn btn-primary">Saved Articles</button></Link>*/}
+
             </div>
           </form>
         </div>

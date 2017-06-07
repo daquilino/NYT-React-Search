@@ -12,17 +12,17 @@ var Search = React.createClass({
 
   componentDidUpdate: function(prevProps, prevState) {
     
-	// this prevents setState to keep triggering componentDidUpdtate 
-	if((this.state.term !== prevState.term) || (this.state.startYear !== prevState.startYear) 
-	 	|| (this.state.endYear !== prevState.endYear)){  	
-  
-	  	Helper.runQuery(this.state.term, this.state.startYear, this.state.endYear)
-	  	.then(function(data){ 		
-				
-				// saves NYT queried articles to state
-				this.setState({"articles" : data}); 		
-		}.bind(this));
-	}	
+  	// this prevents setState to keep triggering componentDidUpdtate 
+  	if((this.state.term !== prevState.term) || (this.state.startYear !== prevState.startYear) 
+  	 	|| (this.state.endYear !== prevState.endYear)){  	
+    
+  	  	Helper.runQuery(this.state.term, this.state.startYear, this.state.endYear)
+  	  	.then(function(data){ 		
+  				
+  				// saves NYT queried articles to state
+  				this.setState({"articles" : data}); 		
+  		}.bind(this));
+  	}	
   },
 
   setTerm: function(term, startYear, endYear){

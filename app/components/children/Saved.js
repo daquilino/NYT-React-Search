@@ -9,24 +9,6 @@ const Saved = React.createClass({
   getInitialState: function() {
     return { saved: []};
   },
-
-
-
-/*
-  componentDidUpdate: function(prevProps, prevState) {
-  
-    // this prevents setState to keep triggering componentDidUpdate 
-    if(this.state.saved !== prevState.saved){   
-
-      Helper.getSaved()
-        .then(function(saved){            
-        
-            this.setState({"saved" : saved});    
-
-        }.bind(this));
-    } 
-  },
-*/
   
   // When component first mounted uses helper function to query db for all saved articles
   // then saves them to state before render is called.
@@ -51,7 +33,6 @@ const Saved = React.createClass({
 
       }.bind(this));  
     }.bind(this));
-
     
   },
   // Here we describe this component's render method
@@ -70,9 +51,9 @@ const Saved = React.createClass({
             {this.state.saved.map(function(article, i) {
             return (
               <div className="well" key={i}>
-                <h2>{article.title}</h2>
+                <h4>{article.title}</h4>
                 
-                <h4>Saved Date: { Moment(article.dateSaved).format('ddd MMMM Do YYYY').toString()}</h4>
+                <h6>Saved Date: { Moment(article.dateSaved).format('ddd MMMM Do YYYY').toString()}</h6>
                 
                 {/* In order for onClick to work we must bind Results 'this' to map callback function below.
                     Also we bind each 'search's' this to the handleClick and use that 'search' as a parameter*/}

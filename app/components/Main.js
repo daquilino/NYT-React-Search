@@ -20,8 +20,11 @@ var Main = React.createClass({
       </header>
       <br/>
       <div className="container">  
+      
         <Search />
         <Saved />
+      
+        {/*this.props.children*/}
       </div>
     </div>  
     );

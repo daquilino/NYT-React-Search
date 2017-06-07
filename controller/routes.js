@@ -23,10 +23,7 @@ module.exports = function(app){
 	// This is the route we will send POST requests to save each article.
 	app.post("/api/saved", function(req, res) {
 	  
-	  console.log("BODY: " ,  req.body);
-
 	  //Here we'll save the article based on the JSON input.
-	  //We'll use Date.now() to always get the current date time
 	  Article.create(req.body, function(err, doc) {
 	    if (err) {
 	      console.log(err);
@@ -38,9 +35,9 @@ module.exports = function(app){
 	});
 
 	//Route used to delete a saved article in the database
-	app.delete("/api/saved", function(req, res) {
+	app.delete("/api/saved/:id", function(req, res) {
 	  	
-	  	Article.remove({"title": req.body.title}, function(error, doc) {
+	  	Article.remove({"_id": req.params.id}, function(error, doc) {
 		    // Log any errors
 		    if (error) 
 		    {

@@ -1,19 +1,18 @@
 // Include the axios package for performing HTTP requests (promise based alternative to request)
-var axios = require("axios");
+var Axios = require("axios");
+var Moment = require("moment");
 
-// NYT API
 
-
-// Helper functions for making API Calls
+// Helper functions for making API Calls 
 var helper = {
 
-  // This function serves our purpose of running the query to geolocate.
+  // This function serves our purpose of running the query to NYT API.
   runQuery: function(searchTerm, startYear, endYear) {
+
 
     const KEY = "48a3eb24334045c18a56943879cb540e";
     const NYT_ENDPOINT = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-    
-  
+
     var params = {
           'api-key': KEY,
           'q': searchTerm,
@@ -21,8 +20,7 @@ var helper = {
           'end_date': endYear + "1231"
     };
 
-
-    return axios.get(NYT_ENDPOINT, {params: params}).then(function(response) {
+    return Axios.get(NYT_ENDPOINT, {params: params}).then(function(response) {
     
       // If get get a result
       if (response.data.response.docs[0]) {
@@ -36,16 +34,22 @@ var helper = {
 
   // This function hits our own server to retrieve the record of query results
   getSaved: function() {
-    return axios.get("/api/saved");
+    return Axios.get("/api/saved");
   },
 
   // This function posts new searches to our database.
-  postSaved: function(body) {
-    return axios.post("/api/saved", body);
+  postSaved: function(article) {
+    var body = {
+      "title": article.headline.main,
+      "datePublished": Moment(article.pub_date),
+      "url": article.web_url
+    };
+   
+    return Axios.post("/api/saved", body);
   },
 
   deleteSaved: function(title){
-    return axios.delete("/api/saved", { title: title });
+    return Axios.delete("/api/saved", { title: title });
   }
 };
 

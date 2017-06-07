@@ -38,12 +38,6 @@ var Query = React.createClass({
               <h4 className="">
                 <strong>Search Term</strong>
               </h4>
-
-              {/*
-                Note how each of the form elements has an id that matches the state.
-                This is not necessary but it is convenient.
-                Also note how each has an onChange event associated with our handleChange event.
-              */}
               
               <input
                 value={this.state.term}

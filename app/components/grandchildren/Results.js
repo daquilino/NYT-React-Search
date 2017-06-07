@@ -1,17 +1,37 @@
 // Include React
 var React = require("react");
 var Moment = require("moment");
+var Helper = require("../utils/helpers");
 
 // Creating the Results component
 var Results = React.createClass({
   // Here we render the function
   getInitialState: function() {
-    return { id: ""};
+    return { article: ""};
   },
 
-  onSave: function(id){
-    this.setState({id: id})
+  componentDidUpdate: function(prevProps, prevState) {
+  
+    // this prevents setState to keep triggering componentDidUpdate 
+    if(this.state.article !== prevState.article){   
+
+      Helper.postSaved(this.state.article)
+        .then(function(result){            
+        
+          this.setState({"article" : ""});    
+          console.log("article saved");
+
+          //go to router-route / saved
+
+        }.bind(this));
+    } 
   },
+
+  handleClick: function(article){
+    this.setState({article: article})
+  },
+
+  
   render: function() {
     return (
       <div className="panel panel-default">
@@ -19,17 +39,22 @@ var Results = React.createClass({
           <h3 className="panel-title text-center">Results</h3>
         </div>
         <div className="panel-body text-center">
-        
+       
            {this.props.articles.map(function(search, i) {
               return (
                 <div className="well" key={i}>
                   <h2>{search.headline.main}</h2>
+                  
                   <h4>published: { Moment(search.pub_date).format('ddd MMMM Do YYYY').toString()}</h4>
-                  <button className="btn btn-primary">SAVE</button>
+                  
+                  {/* In order for onClick to work we must bind Results 'this' to map callback function below.
+                      Also we bind each 'search's' this to the handleClick and use that 'search' as a parameter*/}
+                  <button className="btn btn-primary" onClick={this.handleClick.bind(this, search)} >SAVE</button>
+                  
                   <a href={search.web_url} target="_blank"><button className="btn btn-info">READ</button></a>
                 </div>  
               );
-            })}
+            }.bind(this))}
        
         </div>
       </div>

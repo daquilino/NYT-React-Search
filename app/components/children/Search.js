@@ -13,7 +13,7 @@ var Search = React.createClass({
   componentDidUpdate: function(prevProps, prevState) {
 	
 	// this prevents setState to keep triggering componentDidUpdtate 
-	 if((this.state.term !== prevState.term) || (this.state.startYear !== prevState.startYear) 
+	if((this.state.term !== prevState.term) || (this.state.startYear !== prevState.startYear) 
 	 	|| (this.state.endYear !== prevState.endYear)){  	
 
 	  	Helper.runQuery(this.state.term, this.state.startYear, this.state.endYear)

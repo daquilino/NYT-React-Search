@@ -25,13 +25,9 @@ module.exports = function(app){
 	  
 	  console.log("BODY: " ,  req.body);
 
-	  // Here we'll save the location based on the JSON input.
-	  // We'll use Date.now() to always get the current date time
-	  Article.create({
-	    title: req.body.title,
-	    date: Date.now(),
-	    url: req.body.url
-	  }, function(err, doc) {
+	  //Here we'll save the article based on the JSON input.
+	  //We'll use Date.now() to always get the current date time
+	  Article.create(req.body, function(err, doc) {
 	    if (err) {
 	      console.log(err);
 	    }

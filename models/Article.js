@@ -8,15 +8,20 @@ var ArticleSchema = new Schema({
     	required: "Title is Required"
 	},
 	
-  date: {
-  	type: Date,
-	required: "Date is Required"
+  	datePublished: {
+  		type: Date,
+		required: "Date is Required"
 	},
 	
-  url:{
+  	url:{
 		type: String,
 		trim: true,
-  	required: "Url is Required"
+  		required: "Url is Required"
+	},
+	
+	dateSaved:{
+		type: Date,
+		default: Date.now
 	}
 });
 

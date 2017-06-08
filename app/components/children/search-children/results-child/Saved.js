@@ -38,10 +38,8 @@ const Saved = React.createClass({
     Helper.deleteSaved(article._id)
     .then(function(result){
       Helper.getSaved()
-      .then(function(saved){            
-        
-        this.setState({});  //this is to trigger render  
-
+      .then(function(saved){                  
+        this.querySaved();  
       }.bind(this));  
     }.bind(this));
     

@@ -82,7 +82,6 @@ var Query = React.createClass({
                 Submit
               </button>
               
-              {/*<Link to="/saved"><button className="btn btn-primary">Saved Articles</button></Link>*/}
 
             </div>
           </form>

@@ -9,7 +9,7 @@ var helper = {
   // This function serves our purpose of running the query to NYT API.
   runQuery: function(searchTerm, startYear, endYear) {
 
-
+    // NYT API endpoint constants
     const KEY = "48a3eb24334045c18a56943879cb540e";
     const NYT_ENDPOINT = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 

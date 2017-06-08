@@ -23,8 +23,6 @@ var Results = React.createClass({
           this.setState({"article" : ""});    
           console.log("article saved");
 
-          //go to router-route / saved ?
-
         }.bind(this));
     } 
   },
@@ -33,9 +31,8 @@ var Results = React.createClass({
     this.setState({article: article})
   },
 
-  
   render: function() {
-  console.log("results Rendered");    
+    
     var resultsData;
 
     if(this.props.articles.length > 0)
@@ -45,9 +42,9 @@ var Results = React.createClass({
         {  
           return (
             <div className="well" key={i}>
-              <h3>{search.headline.main}</h3>
+              <h4>{search.headline.main}</h4>
               
-              <h4>published: { Moment(search.pub_date).format('ddd MMMM Do YYYY').toString()}</h4>
+              <h6>Published: { Moment(search.pub_date).format('ddd MMMM Do YYYY').toString()}</h6>
               
               {/* In order for onClick to work we must bind search's 'this' to map callback function below.
                   Also we bind each 'search's' this to the handleClick and use that 'search' as a parameter*/}
@@ -58,32 +55,29 @@ var Results = React.createClass({
           );
         }  
       }.bind(this))
-
     } 
     else
     {
       resultsData =  <h3>No Results</h3>
-
     } 
 
-      return (
-        <div>
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <h3 className="panel-title text-center">Results</h3>
-            </div>
-            <div className="panel-body text-center">
-           
-              {resultsData}
-           
-            </div>
+    return (
+      <div>
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title text-center">Results</h3>
           </div>
+          <div className="panel-body text-center">
+         
+            {resultsData}
+         
+          </div>
+        </div>
 
-          <div className="row">
-            <Saved />
-          </div>
-        </div>    
-      ); 
+          <Saved trigger={"trigger"}/> {/*Saved is passed some dummy prop to trigger componentWillReceiveProps in Saved*/}
+        
+      </div>    
+    ); 
   }
 });
 

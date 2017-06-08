@@ -3,23 +3,34 @@ const React = require("react");
 const Moment = require("moment");
 const Helper = require("../../../utils/helpers");
 
-// This is the History component. It will be used to show a log of  recent searches.
+// This is the Saved component. It will be used to show saved articles.
 const Saved = React.createClass({
 
   getInitialState: function() {
     return { saved: []};
   },
   
-  // When component first mounted uses helper function to query db for all saved articles
-  // then saves them to state before render is called.
+  // When component is first mounted this runs to query db for all saved articles
   componentDidMount: function(prevProps, prevState) {
-      
-      Helper.getSaved()
+      this.querySaved();
+  },
+
+  // Used to query db for all saved articles, then saves them to this.state
+  querySaved: function(){
+  
+    Helper.getSaved()
       .then(function(saved){
 
         this.setState({"saved" : saved.data});    
 
       }.bind(this));  
+  },
+  // Runs every time props are updated.
+  // Used to update (query db for saved articles) 'Saved Articles' before render.
+  // Triggered from parent component 'Results' using dummy prop 
+  componentWillReceiveProps(nextProps) {
+
+    this.querySaved();
   },
 
   handleClick: function(article){
@@ -29,7 +40,7 @@ const Saved = React.createClass({
       Helper.getSaved()
       .then(function(saved){            
         
-        this.setState({"saved" : saved.data});  //this is to trigger render  
+        this.setState({});  //this is to trigger render  
 
       }.bind(this));  
     }.bind(this));

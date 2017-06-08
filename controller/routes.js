@@ -4,12 +4,11 @@ module.exports = function(app){
 	
 	
 	// Route used to query MongoDB for all saved articles.
-
 	app.get("/api/saved", function(req, res) {
 
 	  //We will find all the records, sort it in descending order.
 	  Article.find({}).sort([
-	    ["date", "descending"]
+	    ["dateSaved", "descending"]
 	  ]).exec(function(err, doc) {
 	    if (err) {
 	      console.log(err);

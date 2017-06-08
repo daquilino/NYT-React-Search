@@ -13,6 +13,7 @@ React-based New York Times Article Search application. Users can search NYT for 
 * [Webpack](https://www.npmjs.com/package/webpack) - A module bundler.
 
 ###### NPM Packages
+
 * [axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for the browser and node.js
 * [express](https://www.npmjs.com/package/express) - Node.js web application framework that provides a robust set of features for web and mobile applications.
 * [body-parser](https://www.npmjs.com/package/body-parser) - Node.js body parsing middleware.
@@ -21,7 +22,6 @@ React-based New York Times Article Search application. Users can search NYT for 
 * [mongoose](https://www.npmjs.com/package/mongoose) - A MongoDB object modeling tool.
 * [react](https://www.npmjs.com/package/react) -  A npm package to get you immediate access to React.
 * [react-dom](https://www.npmjs.com/package/react-dom)	-  Entry point of the DOM-related rendering paths paired with isomorphic React.
-* [react-router](https://www.npmjs.com/package/react-router) - Declarative routing for React.
 
 
 

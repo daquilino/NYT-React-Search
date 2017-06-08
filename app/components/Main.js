@@ -3,8 +3,6 @@ var React = require("react");
 
 // Here we include all of the sub-components
 var Search = require("./children/Search");
-var Saved = require("./children/Saved");
-
 
 // Helper for making AJAX requests to our API
 var helpers = require("./utils/helpers");
@@ -18,12 +16,8 @@ var Main = React.createClass({
         <h1>NYT Article Search</h1>
       </header>
       <br/>
-      <div className="container">  
-      
-        <Search />
-        <Saved />
-   
-        {/*this.props.children //for react-router */}
+      <div className="container">       
+        <Search /> 
       </div>
     </div>  
     );

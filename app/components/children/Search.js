@@ -28,7 +28,6 @@ var Search = React.createClass({
   setTerm: function(term, startYear, endYear){
   	// saves values from child component 'Query' to this components state. 
   	this.setState({"term": term, "startYear": startYear, "endYear": endYear});
-
   },
   
   render: function() {

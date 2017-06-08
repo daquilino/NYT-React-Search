@@ -1,7 +1,7 @@
 // Include React
 const React = require("react");
 const Moment = require("moment");
-const Helper = require("../utils/helpers");
+const Helper = require("../../utils/helpers");
 
 // This is the History component. It will be used to show a log of  recent searches.
 const Saved = React.createClass({
@@ -79,7 +79,7 @@ const Saved = React.createClass({
             <h3 className="panel-title text-center">Saved Articles</h3>
           </div>
           <div className="panel-body text-center">
-            <h1>No Saved Articles</h1>
+            <h3>No Saved Articles</h3>
           </div>
         </div>  
        </div> 

@@ -12,13 +12,23 @@ var Main = React.createClass({
   render: function() {
     return (
     <div>
-      <header className="text-center">
-        <h1>NYT Article Search</h1>
-      </header>
-      <br/>
-      <div className="container">       
+      
+      <div className="container">
+        <br/> 
+          <div className="row">     
+            <div className="well text-center" id="title-div">
+              <h1 id="title-header">NYT Article Search</h1>
+            </div>
+          </div>
+        <br/>       
         <Search /> 
+        <footer className="footer">
+        <div className="row text-center">
+            <p id="footer" >&copy;Douglas Aquilino | <a href="https://github.com/daquilino/NYT-React-Search">GitHub Repo</a></p>
+        </div>
+        </footer>
       </div>
+      
     </div>  
     );
   } 

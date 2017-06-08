@@ -1,3 +1,19 @@
 body{
 	background: url("../images/bg1.jpg");
 }
+
+#title-header{
+	font-size: 5vw ;
+	font-weight: 900;
+}
+
+#title-div{
+	background: rgba(245,245,245,.9);
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#footer{
+	background: rgba(245,245,245,.9);
+	margin-bottom: 0;
+}
